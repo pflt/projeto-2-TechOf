@@ -1,0 +1,415 @@
+:root {
+    --main-color: rgb(255, 243, 177);
+    --navbars-color: rgb(53, 94, 103);
+    --box-color: rgba(224, 160, 63, 0.3);;
+    --font-color1: white; 
+    --font-color2: black;
+    --font-color3:  rgb(159, 43, 44); 
+    --p-font: Arial;
+    --box-blur: blur(20px);
+    --webkitbox-blur: blur(20px);
+    --box-shadow: 0 1px 12px rgba(255, 255, 255, 0.25);
+    --box-border: 1px solid rgba(255, 255, 255, 0.25);;
+}
+
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+    background-color: var(--main-color);
+}
+
+/*HEADER + MAIN + FOOTER*/
+
+header {
+    height: calc(100vh - 95vh);
+    background-color: var(--navbars-color);
+}
+
+nav {
+    height: 100%;
+    display: flex;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--main-color);
+    font-size: 1.2em;
+}
+
+.logo-menu {
+    width: 15%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 7em;
+}
+
+.logo-menu a {
+    color: var(--main-color);
+    font-size: 1.6em; 
+}
+
+#botoes-pesquisa {
+    width: 85%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1em;
+    padding-right: 7em;
+}
+
+#botoes-pesquisa a {
+    border: 1px solid rgba(224, 160, 63, 1);
+    border-radius: 3px;
+    padding: 4px 4px;
+    color: var(--main-color);
+}
+
+#botoes-pesquisa a:hover {
+    transform: scale(1.05);
+}
+
+footer {
+    height: calc(100vh - 95vh);
+    display: flex;
+    background-color: var(--navbars-color);
+}
+
+.contacto-footer {
+    width: 30%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 7em;
+}
+
+.contacto-footer a {
+    text-decoration: none;
+    color: var(--font-color1);
+    font-size: 1.2em;
+}
+
+.redes-sociais {
+    width: 70%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5em;
+    padding-right: 7em;
+}
+
+.instagram-logo {
+    width: 2em;
+    height: 2em;
+}
+
+.facebook-logo {
+    width: 3.5em;
+    height: 3.5em;
+}
+
+main {
+    height: auto;
+    min-height: calc(100vh - 10vh);
+}
+
+/* INDEX.HTML*/
+
+/* SECTION INTRODUCAO */
+
+.introducao {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3em 0 7em 0;
+    margin: 0 auto;
+}
+
+.introducao-titulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.introducao-titulo h1 {
+    width: 60%;
+    font-size: 3em;
+    margin: 0;
+    color: var(--font-color3);
+}
+
+.introducao-paragrafo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.introducao-paragrafo p {
+    width: 60%;
+    font-size: 1.2em;
+    padding: 0.5em 0.5em;
+    margin: 0;
+    font-family: 'Courier New';
+    color: var(--font-color2);
+    background-color: var(--box-color);
+    box-shadow: var(--box-shadow);
+    border-radius: 8px;
+    border: var(--box-border);
+    backdrop-filter: var(--box-blur);
+    -webkit-backdrop-filter: var(--webkitbox-blur);
+
+}
+
+/* SECTION CONTADOR-APARTAMENTOS */
+
+.contador-apartamentos {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    background-color: var(--box-color);
+    box-shadow: var(--box-shadow);
+    border-radius: 8px;
+    border: var(--box-border);
+    backdrop-filter: var(--box-blur);
+    -webkit-backdrop-filter: var(--webkitbox-blur);
+}
+
+.contador-apartamentos h2{
+    font-size: 1.8em;
+    font-family: Calibri;
+    color: var(--navbars-color);
+    font-size: 1.8em;
+}
+
+.resumo-container {
+    display: flex;
+    gap: 5em;
+    padding-bottom: 1em;
+}
+
+.resumo-cadastrados,
+.resumo-favoritos {
+    display: flex;
+    gap: 0.3em;
+    border-radius: 3px;
+    box-shadow: 1px 1px 3px black;
+    background-color: var(--main-color);
+}
+
+.resumo-cadastrados p,
+.resumo-favoritos p {
+    margin: 0;
+    padding: 0.8em 1.3em;
+}
+
+/* FLATS.HTML*/
+
+/*SECTION FILTROS-APARTAMENTOS*/
+
+.botoes-filtro {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    padding :1.5em 0;
+    gap: 1.5em;
+}
+
+.botoes-filtro button {
+    background-color: var(--box-color);
+    border-radius: 4px;
+    color: rgb(0, 0, 0);
+    border-color: var(--navbars-color);
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+/*APARTAMENTOS-CADASTRADOS*/
+
+.apartamentos-cadastrados {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto 1em auto;
+    gap: 1em;
+}
+
+#paragrafoNenhum,
+.style-div-flats {
+    width: 100%;
+    color: var(--font-color2);
+    background-color: var(--box-color);
+    box-shadow: var(--box-shadow);
+    border-radius: 8px;
+    border: var(--box-border);
+    backdrop-filter: var(--box-blur);
+    -webkit-backdrop-filter: var(--webkitbox-blur);
+}
+
+.lista-flats {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.style-div-flats {
+    display: flex;
+    flex-direction: rown;
+    gap: 1em;
+    padding: 1em;
+    border: 1px solid black;
+}
+
+.numero-lista-aps {
+    font-weight: 700;
+    color: var(--font-color3);
+}
+
+.style-flat {
+    font-family: Arial;
+}
+
+.style-div-favoritar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-family: 'Arial Narrow';
+    color: var(--font-color3);
+    gap: 0.5em;
+}
+
+.style-button-eliminar {
+    border: 2px solid var(--navbars-color);
+    border-radius: 3px;
+    color: var(--font-color2);
+    background-color: var(--main-color);
+}
+
+.style-button-eliminar:hover {
+    transform: scale(1.15);
+}
+
+/*CADASTRAR-NOVO*/
+
+.cadastrar-novo {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 1em auto;
+    padding-bottom: 1em;
+    color: var(--font-color2);
+    background-color: var(--box-color);
+    box-shadow: var(--box-shadow);
+    border-radius: 8px;
+    border: var(--box-border);
+    backdrop-filter: var(--box-blur);
+    -webkit-backdrop-filter: var(--webkitbox-blur);
+}
+
+.cadastrar-novo h2 {
+    color: var(--navbars-color);
+}
+
+.cadastrar-novo a {
+    text-decoration: none;
+    font-size: 1.2em;
+    border: 2px solid var(--navbars-color);
+    border-radius: 3px;
+    padding: 4px 4px;
+    color: var(--font-color2);
+    background-color: var(--main-color);
+}   
+
+.cadastrar-novo a:hover {
+    transform: scale(1.15);
+}
+
+/* NEW-FLATS.HTML*/
+
+/* SECTION CADASTRAR-IMOVEL*/
+
+#newflat-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.cadastrar-imovel {
+    width: 80%;
+    padding: 2em 0;
+    display: flex;
+    justify-content: center;
+    color: var(--font-color2);
+    background-color: var(--box-color);
+    box-shadow: var(--box-shadow);
+    border-radius: 8px;
+    border: var(--box-border);
+    backdrop-filter: var(--box-blur);
+    -webkit-backdrop-filter: var(--webkitbox-blur);
+}
+
+.input-questionario {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 1em;
+}
+
+.input-questionario div {
+    display: flex;
+    gap: 0.5em;
+}
+
+.input-button {
+    display: flex;
+    justify-content: center;
+}
+
+#botao-cadastrar {
+    width: 35%;
+    background-color: var(--main-color);
+    border-radius: 4px;
+    color: rgb(0, 0, 0);
+    border-color: var(--navbars-color);
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+.erroFormulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

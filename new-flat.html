@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="new-flat.js" defer></script>
+</head>
+<body>
+    <header class="header-site">
+        <nav class="navbar">
+            <div class="logo-menu">
+                <a  href="index.html"><b>RentEase</b></a>
+            </div>
+            <div id="botoes-pesquisa">
+                <a href="./index.html">Resumo</a>
+                <a href="./flats.html">Apartamentos</a>
+                <a href="./new-flat.html">Cadastrar</a>
+            </div>
+        </nav>
+    </header>
+    <main id="newflat-main">
+        <section class="cadastrar-imovel">
+            <form action="#" method="get" class="input-questionario" id="form-cadastro">
+                <div class="input-fileira1">
+                    <b>Cidade:</b> <input type="text" id="cidade" placeholder="Lisboa">
+                    <b>Nome da rua :</b> <input type="text" id="nome-rua" placeholder="Florentino">
+                    <b>Numero da casa:</b> <input type="text" id="numero-casa" placeholder="55">
+                </div>
+                <div class="input-fileira2">
+                    <b>Tamanho da area:</b> <input type="text" id="tamanho-area" placeholder="100">
+                    <b>Ano de construcao:</b> <input type="text" id="ano-construcao" placeholder="2005">
+                </div>
+                <div class="input-fileira3">
+                    <b>Valor de arrendamento:</b> <input type="text" id="valor" placeholder="950">
+                    <b>Tem AC?</b> <input type="checkbox" id="has-AC">
+                    <b>Data disponivel:</b> <input type="date" id="date" placeholder="YYYY-MM-DD">
+                </div>
+                <div class="erroFormulario"></div>
+                <div class="input-button">
+                    <button type="button" id="botao-cadastrar">Cadastrar apartamento!</button>
+                </div>
+            </form> 
+        </section>
+    </main>
+    <footer class="footer-pagina">
+        <div class="contacto-footer">
+            <a href="">rentease@suport.com</a>
+        </div>
+        <div class="redes-sociais">
+            <a href=""><img class="instagram-logo" src="./imgs/icone-Instagram.png" alt="Instagram"></a>
+            <a href=""><img class="facebook-logo" src="./imgs/icone-Facebook.png" alt="Facebook"></a>
+        </div>
+    </footer>
+</body>
+</html>
