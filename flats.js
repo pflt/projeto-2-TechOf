@@ -120,6 +120,7 @@ function cardsApartamentos() {
         const favoritarCheck = document.createElement("input");
         favoritarCheck.id = apartamentosCriados[i].id;;
         favoritarCheck.type = "checkbox";
+        favoritarCheck.classList.add("favoritar-check");
         favoritarCheck.value = "favortiatr";
         favoritarCheck.checked = apartamentosCriados[i].favorito || false;
         /* nao existe evento checked o evento tem que ser chang*/

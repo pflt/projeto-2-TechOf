@@ -206,6 +206,7 @@ main {
     border-radius: 3px;
     box-shadow: 1px 1px 3px black;
     background-color: var(--main-color);
+    padding: 0.2em 1.7em;
 }
 
 .resumo-cadastrados p,
@@ -282,7 +283,8 @@ main {
     display: flex;
     gap: 1em;
     padding: 1em;
-    border: 4px double black;
+    border: 1px solid black;
+    box-shadow: 1px 1px 2px black;
 }
 
 .numero-lista-aps {
@@ -326,11 +328,17 @@ main {
     border: 0;
 }
 
+.favoritar-check {
+    cursor: pointer;
+}
+
 .style-button-eliminar {
     border: 2px solid var(--navbars-color);
     border-radius: 3px;
     color: var(--font-color2);
     background-color: var(--main-color);
+    padding: 0.2em 1em;
+    cursor: pointer;
 }
 
 .style-button-eliminar:hover {
@@ -364,7 +372,7 @@ main {
     font-size: 1.2em;
     border: 2px solid var(--navbars-color);
     border-radius: 3px;
-    padding: 4px 4px;
+    padding: 0.4em 1.2em;
     color: var(--font-color2);
     background-color: var(--main-color);
 }   
@@ -423,7 +431,12 @@ main {
     color: rgb(0, 0, 0);
     border-color: var(--navbars-color);
     font-size: 0.9em;
+    padding: 0.5em 1.2em;
     cursor: pointer;
+}
+
+#botao-cadastrar:hover {
+    transform: scale(1.1);
 }
 
 .erroFormulario {
