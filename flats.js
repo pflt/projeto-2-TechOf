@@ -1,6 +1,10 @@
 const paragrafo = document.getElementById("paragrafoNenhum");
 const listaFlats = document.querySelector(".lista-flats");
 const listaAps = document.querySelector(".apartamentos-cadastrados");
+const filtroCidade = document.getElementById("button-cidade");
+const filtroPreco = document.getElementById("button-preco");
+const filtroArea = document.getElementById("button-area");
+const filtroLimpar = document.getElementById("button-limpar");
 
 const apartamentosCriados = JSON.parse(localStorage.getItem("apartamentos")) || [];
 console.log(apartamentosCriados);
@@ -94,6 +98,17 @@ function cardsApartamentos() {
             const flat = document.createElement("p");
             flat.innerText = chave + ": " + apartamentosCriados[i][chave];
             flat.classList.add("style-flat");
+            /* classe para arrumar a diferenca de carcateres de cada um*/
+            flat.classList.add(chave);
+            /*if (chave === "ac" && apartamentosCriados[i][chave] == true) {
+                flat.innerText = chave + ": " + apartamentosCriados[i][chave] + " ";
+                console.log("feito");
+            }*/
+            /*tenho que fazer isso se nao a chave favoritar que tive que criar depois 
+            para ficar checked vai acabar aparecendo no ncard e nao quero*/
+            if (chave === "favorito") {
+                flat.classList.add("hidden");
+            }
             divAps.appendChild(flat);
         }
         const divFavoritar = document.createElement("div");
@@ -122,8 +137,70 @@ function cardsApartamentos() {
     };
 };
 
+function filtrarCidade () {
+    apartamentosCriados.sort((a,b) => a.cidade.localeCompare(b.cidade)); /* localComapre (metodo de string) compara igual<> 
+    mas nao numerico e sim como strings mesmo que sue ToLowerCase ele ainda sim da problemas por exemplo com acentos*/
+    localStorage.setItem("apartamentos", JSON.stringify(apartamentosCriados));
+    const listaApsCidade = document.querySelector(".apartamentos-cadastrados");
+    apartamentosCriados.forEach((apartamento) => {
+        const divApCidade = document.getElementById(apartamento.id);
+        /*console.log("procurando:", `apartamento-${apartamento.id}`, "achou:", divApCidade);*/
+        if (divApCidade) {
+            listaApsCidade.appendChild(divApCidade);
+        }
+    });
+};
+    /*
+    const cidades = apartamentosCriados.map(apartamento => apartamento.cidade);
+    cidades.sort();
+    const indexCidades = cidades.reduce((atual, indice) => {
+        return cidades.indexOf(atual) === indice;
+    });
+    console.log(cidades);
+    console.log(indexCidades);
+    */
 
+function filtrarPreco () {
+    apartamentosCriados.sort((a,b) => a.valor - b.valor);
+    localStorage.setItem("apartamentos", JSON.stringify(apartamentosCriados));
+    const listaApsValor = document.querySelector(".apartamentos-cadastrados");
+    apartamentosCriados.forEach((apartamento) => {
+        const divApValor = document.getElementById(apartamento.id);
+        if (divApValor) {
+            listaApsValor.appendChild(divApValor);
+        }
+    });
+};
 
+function filtrarArea () {
+    apartamentosCriados.sort((a,b) => b.area - a.area);
+    /* o que importa nao e o sinal e sim quem vem antes e depois a ou b*/
+    localStorage.setItem("apartamentos", JSON.stringify(apartamentosCriados));
+    const listaApsArea = document.querySelector(".apartamentos-cadastrados");
+    apartamentosCriados.forEach((apartamento) => {
+        const divApArea = document.getElementById(apartamento.id);
+        if (divApArea) {
+            listaApsArea.appendChild(divApArea);
+        }
+    });
+};
+
+function filtrarLimpar () {
+    apartamentosCriados.sort((a,b) => a.id - b.id);
+    localStorage.setItem("apartamentos", JSON.stringify(apartamentosCriados));
+    const listaApsId = document.querySelector(".apartamentos-cadastrados");
+    apartamentosCriados.forEach((apartamento) => {
+        const divApId = document.getElementById(apartamento.id);
+        if (divApId) {
+            listaApsId.appendChild(divApId);
+        }
+    });
+};
+
+filtroCidade.addEventListener("click", filtrarCidade);
+filtroPreco.addEventListener("click", filtrarPreco);
+filtroArea.addEventListener("click", filtrarArea);
+filtroLimpar.addEventListener("click", filtrarLimpar);
 
 
 
