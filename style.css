@@ -502,7 +502,58 @@ main {
     align-items: center;
 }
 
+#modal-cadastro {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(3, 3, 3, 0.5); 
+}
 
+#modal-cadastro.hidden {
+    display: none;
+}
+
+.container-modal-cadastro {
+    width: 30%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.1em;
+    color: var(--font-color1);
+    background-color: var(--navbars-color);
+    box-shadow: var(--box-shadow);
+    border-radius: 8px;
+    border: var(--box-border);
+    backdrop-filter: var(--box-blur);
+    -webkit-backdrop-filter: var(--webkitbox-blur);
+}
+
+.div-modal-texto-cadastro {
+    text-align: center;
+}
+
+.texto-modal-cadastro {
+    font-family: Arial;
+    font-size: 1.1em,;
+}
+
+.div-modal-button {
+    display: flex;
+    gap: 1em;
+}
+
+.modal-button-cadastrar,
+.modal-button-aps {
+    padding: 0.3em 1.6em;
+    cursor: pointer;
+}
 
 
 

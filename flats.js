@@ -47,6 +47,9 @@ function deletarAp () {
     localStorage.setItem("apartamentos", JSON.stringify(apartamentosCriados));
     const divRemover = document.getElementById(idSelecionado);
     divRemover.remove();
+    /*para quando apagar atualizar o n umero de criacao*/
+    listaAps.innerHTML = "";
+    cardsApartamentos();
     modal.classList.add("hidden");
 };
 
@@ -57,6 +60,7 @@ function cancelarAp () {
 buttonModalDeletar.addEventListener("click", deletarAp);
 buttonModalCancelar.addEventListener("click", cancelarAp);
 
+/*estava ater problemas em manter o favorito como favorito*/
 let quantosChecked = apartamentosCriados.filter(function (apartamento) {
     return apartamento.favorito;
 }).length;

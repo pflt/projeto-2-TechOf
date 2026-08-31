@@ -9,6 +9,9 @@ const disponibilidade = document.getElementById("date");
 const botaoCadastrar = document.getElementById("botao-cadastrar");
 const form = document.getElementById("form-cadastro");
 const containerErro = document.querySelector(".erroFormulario");
+const modalCadastro = document.getElementById("modal-cadastro");
+const buttonModalCadastrar = document.querySelector(".modal-button-cadastrar");
+const buttonModalApartamentos = document.querySelector(".modal-button-aps");
 
 function cadastrarApartamento () {
     const cidadeValor = cidade.value.trim();
@@ -46,10 +49,26 @@ function cadastrarApartamento () {
     if (!temErro) {
         criarApartamento(cidadeValor, ruaValor, numeroRuaValor, 
         areaValor, anoValor, valorValor, acValor,disponibilidadeValor);
-        alert("Seu apartamento foi cadastrado com sucesso!" + "\n" + "Aceda o portal Apartamentos para ve-lo!");
+        modalCadastro.classList.remove("hidden");
+        /*alert("Seu apartamento foi cadastrado com sucesso!" + "\n" + "Aceda o portal Apartamentos para ve-lo!");*/
         form.reset(); /* tive que fazer pois estava enviando mas nao resentando os campos*/
     } 
 };
+
+function voltarCadastrarAp () {
+    modalCadastro.classList.add("hidden");
+};
+
+function paginaFlats () {
+    modalCadastro.classList.add("hidden");
+    /* novo conceito para ir para uma pgina com jS usar window.location.href = */
+    window.location.href = "./flats.html";
+
+};
+
+buttonModalCadastrar.addEventListener("click", voltarCadastrarAp);
+buttonModalApartamentos.addEventListener("click", paginaFlats);
+
 
     /* se fizesse desse jeito corria o primeiro erro e ja parava
 quero que corrar todos os erros
