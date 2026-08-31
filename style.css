@@ -381,6 +381,63 @@ main {
     transform: scale(1.15);
 }
 
+/* SECTION MODAL*/
+
+#modal {
+    display: none;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(3, 3, 3, 0.5); 
+}
+
+#modal.hidden {
+    display: none;
+}
+
+.container-modal {
+    width: 30%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.1em;
+    color: var(--font-color1);
+    background-color: var(--navbars-color);
+    box-shadow: var(--box-shadow);
+    border-radius: 8px;
+    border: var(--box-border);
+    backdrop-filter: var(--box-blur);
+    -webkit-backdrop-filter: var(--webkitbox-blur);
+}
+
+.div-modal-texto {
+    text-align: center;
+}
+
+.texto-modal {
+    font-family: Arial;
+    font-size: 1.1em,;
+}
+
+.div-modal-button {
+    display: flex;
+    gap: 1em;
+}
+
+.modal-button-cancelar,
+.modal-button-deletar   {
+    padding: 0.3em 1.6em;
+    cursor: pointer;
+}
+
+
 /* NEW-FLATS.HTML*/
 
 /* SECTION CADASTRAR-IMOVEL*/

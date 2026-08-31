@@ -5,6 +5,9 @@ const filtroCidade = document.getElementById("button-cidade");
 const filtroPreco = document.getElementById("button-preco");
 const filtroArea = document.getElementById("button-area");
 const filtroLimpar = document.getElementById("button-limpar");
+const modal = document.getElementById("modal");
+const buttonModalDeletar = document.querySelector(".modal-button-deletar");
+const buttonModalCancelar = document.querySelector(".modal-button-cancelar");
 
 const apartamentosCriados = JSON.parse(localStorage.getItem("apartamentos")) || [];
 console.log(apartamentosCriados);
@@ -18,16 +21,22 @@ if (apartamentosCriados !== []) {
     cardsApartamentos();
 };
 
+let idSelecionado;
+
 function apagarApartamento (event) {
     /* como fazer com que o botao saiba qual apartamento estou criando VER MELHOR O QUE O TARGET FAZ*/
     console.log("cliquei");
-    const idSelecionado = event.target.id;
+    idSelecionado = event.target.id;
+    modal.classList.remove("hidden");
+};
+
+function deletarAp () {
     const apartamentoEncontrado = apartamentosCriados.find(function (apartamento) {
         return apartamento.id == idSelecionado;
     });
     /*console.log(apartamentoEncontrado);*/
     const indiceApartamentos = apartamentosCriados.findIndex(function (apartamento) {
-        return apartamento.id == idSelecionado
+         return apartamento.id == idSelecionado
     });
     /*console.log(indiceApartamentos);*/
     const removidoAp = apartamentosCriados.splice(indiceApartamentos, 1);
@@ -38,7 +47,15 @@ function apagarApartamento (event) {
     localStorage.setItem("apartamentos", JSON.stringify(apartamentosCriados));
     const divRemover = document.getElementById(idSelecionado);
     divRemover.remove();
+    modal.classList.add("hidden");
 };
+
+function cancelarAp () {
+    modal.classList.add("hidden");
+};
+
+buttonModalDeletar.addEventListener("click", deletarAp);
+buttonModalCancelar.addEventListener("click", cancelarAp);
 
 let quantosChecked = apartamentosCriados.filter(function (apartamento) {
     return apartamento.favorito;
