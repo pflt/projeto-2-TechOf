@@ -9,7 +9,8 @@ const modal = document.getElementById("modal");
 const buttonModalDeletar = document.querySelector(".modal-button-deletar");
 const buttonModalCancelar = document.querySelector(".modal-button-cancelar");
 
-const apartamentosCriados = JSON.parse(localStorage.getItem("apartamentos")) || [];
+/*const apartamentosCriados = JSON.parse(localStorage.getItem("apartamentos")) || [];*/
+const apartamentosCriados = loadFlats ();
 console.log(apartamentosCriados);
 
 /* deu um erro pois tenho que abrir direto por um link a pagina e nao
@@ -34,6 +35,11 @@ function deletarAp () {
     const apartamentoEncontrado = apartamentosCriados.find(function (apartamento) {
         return apartamento.id == idSelecionado;
     });
+    /* tive que adicionar pois quando apagava um ap favoritado nao subtraia 1*/
+    if (apartamentoEncontrado && apartamentoEncontrado.favorito) {
+        quantosChecked -= 1;
+        saveFlats(apartamentosCriados);
+    }
     /*console.log(apartamentoEncontrado);*/
     const indiceApartamentos = apartamentosCriados.findIndex(function (apartamento) {
          return apartamento.id == idSelecionado
@@ -44,7 +50,7 @@ function deletarAp () {
     /* para conseguir aceder a div com um id que seja dinamico vou usar query selector desse jeito 
     const idGetElement = "#" + idSelecionado;
     console.log(idGetElement);*/
-    localStorage.setItem("apartamentos", JSON.stringify(apartamentosCriados));
+    saveFlats(apartamentosCriados);
     const divRemover = document.getElementById(idSelecionado);
     divRemover.remove();
     /*para quando apagar atualizar o n umero de criacao*/
@@ -74,7 +80,7 @@ function favoritarAp (event) {
     console.log("indice:", indiceFavorito);
     apartamentosCriados[indiceFavorito].favorito = event.target.checked;
     console.log("apartamentos atualizado:" + apartamentosCriados[indiceFavorito]);
-    localStorage.setItem("apartamentos", JSON.stringify(apartamentosCriados));
+    saveFlats(apartamentosCriados);
     if (event.target.checked) {
         quantosChecked += 1;
         /*console.log("checked");
@@ -84,7 +90,7 @@ function favoritarAp (event) {
         /*console.log("unchecked");
         console.log(quantosChecked);*/
     }
-    localStorage.setItem("quantosChecked", quantosChecked);
+    saveCheckedAp(quantosChecked);
 };
     /*
     if (event.target.checked) {
@@ -162,7 +168,7 @@ function cardsApartamentos() {
 function filtrarCidade () {
     apartamentosCriados.sort((a,b) => a.cidade.localeCompare(b.cidade)); /* localComapre (metodo de string) compara igual<> 
     mas nao numerico e sim como strings mesmo que sue ToLowerCase ele ainda sim da problemas por exemplo com acentos*/
-    localStorage.setItem("apartamentos", JSON.stringify(apartamentosCriados));
+    saveFlats(apartamentosCriados);
     const listaApsCidade = document.querySelector(".apartamentos-cadastrados");
     apartamentosCriados.forEach((apartamento) => {
         const divApCidade = document.getElementById(apartamento.id);
@@ -184,7 +190,7 @@ function filtrarCidade () {
 
 function filtrarPreco () {
     apartamentosCriados.sort((a,b) => a.valor - b.valor);
-    localStorage.setItem("apartamentos", JSON.stringify(apartamentosCriados));
+    saveFlats(apartamentosCriados);
     const listaApsValor = document.querySelector(".apartamentos-cadastrados");
     apartamentosCriados.forEach((apartamento) => {
         const divApValor = document.getElementById(apartamento.id);
@@ -197,7 +203,7 @@ function filtrarPreco () {
 function filtrarArea () {
     apartamentosCriados.sort((a,b) => b.area - a.area);
     /* o que importa nao e o sinal e sim quem vem antes e depois a ou b*/
-    localStorage.setItem("apartamentos", JSON.stringify(apartamentosCriados));
+    saveFlats(apartamentosCriados);
     const listaApsArea = document.querySelector(".apartamentos-cadastrados");
     apartamentosCriados.forEach((apartamento) => {
         const divApArea = document.getElementById(apartamento.id);
@@ -209,7 +215,7 @@ function filtrarArea () {
 
 function filtrarLimpar () {
     apartamentosCriados.sort((a,b) => a.id - b.id);
-    localStorage.setItem("apartamentos", JSON.stringify(apartamentosCriados));
+    saveFlats(apartamentosCriados);
     const listaApsId = document.querySelector(".apartamentos-cadastrados");
     apartamentosCriados.forEach((apartamento) => {
         const divApId = document.getElementById(apartamento.id);

@@ -16,22 +16,30 @@ const buttonModalApartamentos = document.querySelector(".modal-button-aps");
 function cadastrarApartamento () {
     const cidadeValor = cidade.value.trim();
     const ruaValor = rua.value.trim();
-    const numeroRuaValor = numeroRua.value.trim();
-    const areaValor = area.value.trim();
-    const anoValor = ano.value.trim();
-    const valorValor = valor.value.trim();
+    const numeroRuaValor = numeroRua.value;
+    const areaValor = area.value;
+    const anoValor = ano.value;
+    const valorValor = valor.value;
     const acValor = ac.checked;
     const disponibilidadeValor = disponibilidade.value;
 
     const validacoes = [
-        {valor: cidadeValor, regra: x => x.length < 4, mensagem: "Preencha ou complete o campo cidade.", elemento: cidade},
-        {valor: ruaValor, regra: x => x ==="", mensagem: "Preencha o campo rua.", elemento: rua},
-        {valor: numeroRuaValor, regra: x => x === "", mensagem: "Preencha o campo numero.", elemento: numeroRua},
-        {valor: areaValor, regra: x => x ==="", mensagem: "Preencha o campo valor da area.", elemento: area},
-        {valor: anoValor, regra: x => x.length < 4 || x.length > 4, mensagem: "Preencha ou complete o campo ano.", elemento: ano},
-        {valor: valorValor, regra: x => x.length < 1, mensagem: "Preencha ou complete o campo valor.", elemento: valor},
-        {valor: disponibilidadeValor, regra: x => x ==="", mensagem: "Preencha campo data disponivel.", elemento: disponibilidade}
+        {valor: cidadeValor, regra: x => x.length < 2, mensagem: "Complete o campo cidade.", elemento: cidade},
+        {valor: ruaValor, regra: x => x.length < 2, mensagem: "Complete o campo rua.", elemento: rua},
+        {valor: numeroRuaValor, regra: x => Number(x) <= 0 || !Number.isInteger(Number(x)), mensagem: "Complete o campo numero.", elemento: numeroRua},
+        {valor: areaValor, regra: x => Number(x) <= 0 || !isFinite(Number(x)), mensagem: "Complete o campo valor da area.", elemento: area},
+        {valor: anoValor, regra: x => !Number.isInteger(Number(x)) || Number(x) < 1900 || Number(x) > new Date().getFullYear(), mensagem: "Complete o campo ano.", elemento: ano},
+        {valor: valorValor, regra: x => Number(x) <= 0 || !isFinite(Number(x)), mensagem: "Complete o campo valor.", elemento: valor},
+        {valor: disponibilidadeValor, regra: x => x ==="", mensagem: "Complete o campo data disponivel.", elemento: disponibilidade}
+        /* preciso por Number na frente do isInteger para poder o usar o ! */
     ];
+
+    /*Nao esta resetando os erros esta multiplanco*/
+
+    containerErro.innerHTML = "";
+    validacoes.forEach(campo => {
+        campo.elemento.style.borderColor = "";
+    });
 
     let temErro = false;
     for (const campo of validacoes) {
@@ -82,7 +90,7 @@ quero que corrar todos os erros
     };
 */
 /*const arrApartamentos = [];   problema com napo slavar quando faz refresh*/
-const arrApartamentos = JSON.parse(localStorage.getItem("apartamentos")) || [];
+const arrApartamentos = loadFlats ();
 
 function criarApartamento(cidadeValor, ruaValor, numeroRuaValor, 
     areaValor, anoValor, valorValor, acValor,disponibilidadeValor ) {
@@ -99,11 +107,12 @@ function criarApartamento(cidadeValor, ruaValor, numeroRuaValor,
         ano: anoValor,
         valor: valorValor,
         ac: acValor,
-        data: disponibilidadeValor
+        data: disponibilidadeValor,
+        favorito: false
     };
     arrApartamentos.push(apartamentos);
     /*adicionar o local storage para mandar informacao a outra pagina*/
-    localStorage.setItem("apartamentos", JSON.stringify(arrApartamentos)); 
+    saveFlats(apartamentosCriados); 
     console.log(arrApartamentos);
 };
 

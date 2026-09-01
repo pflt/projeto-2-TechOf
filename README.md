@@ -1,183 +1,157 @@
-Nosso projeto final desse modulo consiste em:
-    Uma pagina de arrendamento de casa chamada RentEase.
-Onde vamos trabalhar com HTML5, CSS3 E JS.
-Essa aplicacao ira ajudar a registrar, comparar apartamentos ,
-guardaros apartamentos, permitir pesquisa e ordenar e destacar favoritos:
-    ou seja:
-        - Precisamos criar uma pagina para registrar e apagar os apartamentos,
-        tanto numa quanto outra verificar se ja tem ou se nao tem o apartamento, 
-        para registrar inserir dados.
-        - Depois de registrado ter uma pagina onde possa ver meus apartamentos registrados 
-        (pensar se os outros podem ver o que eu registrei? Nao, os apartemntos sao so para a pessoa que esta a registrar)
-        ter na pagina com eles um potao de eliminar ou seja apagar o apartamento, favoritar, e criar um filtro onde dependendo 
-        do parametro aparecam os apartamentos, caso nao tenha nenhum emitir uma mensagem deusar outro paramatro.
-        - Guardar os apartementos dentro de localStorage para ficarem salvos e nao apagados apos um refresh.
-        - Salvar o projeto em repositorio local e repositorio remoto GitHub.
-        - 3 paginas ligadas ( index.html (main), fltas.html (flats), new-flat.html(criar flats)).
-        - Cada apartemnto deve conter um id que sera o Date.now() ou seja sera o tempo que foi gerado aquele id naquele momento, 
-        desde 1970.
-    
-4. Estrutura obrigatória da aplicação
-A aplicação deve ter três páginas HTML ligadas por links normais:
-    a) Home - index.html
-    • Header com logótipo ou nome RentEase e menu para as três páginas.
-    • Pequeno resumo com o número total de apartamentos e o número de
-    favoritos.
-    • Lista ou tabela apenas com os apartamentos marcados como favoritos.
-    • Botão para remover um apartamento dos favoritos sem o apagar.
-    • Mensagem de estado vazio quando ainda não existem favoritos.
-    
-    b) Todos os apartamentos - flats.html
-    • Tabela ou conjunto de cards com todos os apartamentos guardados.
-    • Apresentação das propriedades definidas no modelo de dados.
-    • Botão para marcar ou desmarcar cada apartamento como favorito.
-    • Botão para eliminar um apartamento.
-    • Mensagem de estado vazio quando não existem apartamentos.
-    • Filtros por cidade, intervalo de preço e intervalo de área.
-    • Ordenação por cidade, preço e área.
-    • Aplicação da sequência: carregar dados, filtrar, ordenar e só depois
-    renderizar
-    c) Novo apartamento - new-flat.html
+# RentEase
 
-Formulário com um input adequado para cada propriedade editável.
+**RentEase** é uma plataforma web para gestão de portfólio de imóveis para arrendamento. Permite cadastrar, visualizar, favoritar, ordenar e remover apartamentos de forma simples e rápida, com todos os dados persistidos localmente no navegador.
 
-    d) Fluxo de submissão
-    • Mensagens de erro junto do campo ou numa área claramente identificada.
-    • Botão Guardar.
-    d..1. Quando os dados forem válidos:
-    d..1.1. criar o objecto, adicionar ao array e guardar em localStorage.
-    d..1.2. Apresentar uma mensagem de sucesso e disponibilizar um link
-    para Todos os apartamentos.
-    d..1.3. Limpar o formulário apenas depois de o apartamento ter sido
-    guardado com sucesso.
+---
 
-5. Modelo de dados
-        Cada apartamento deve seguir esta estrutura:
-        {
-        id: 1723456789012,
-        city: "Porto",
-        streetName: "Rua das Flores",
-        streetNumber: 42,
-        areaSize: 85,
-        hasAC: true,
-        yearBuilt: 2018,
-        rentPrice: 950,
-        dateAvailable: "2026-09-01",
-        isFavourite: false
-        }
+## Sumário
 
-• Usa Date.now() para criar um id numérico simples e suficientemente único
-para este exercício.
-• Usa um checkbox para hasAC e guarda sempre true ou false.
-• O input type="date" fornece uma data no formato YYYY-MM-DD.
-• Um apartamento novo começa com isFavourite igual a false.
+- [Sobre o projeto](#sobre-o-projeto)
+- [Funcionalidades](#funcionalidades)
+  - [Navegação](#navegação)
+  - [Página Resumo](#página-resumo)
+  - [Página Cadastrar](#página-cadastrar)
+  - [Página Apartamentos](#página-apartamentos)
+- [Tecnologias utilizadas](#tecnologias-utilizadas)
+- [Como executar o projeto](#como-executar-o-projeto)
+- [Estrutura de pastas](#estrutura-de-pastas)
+- [Capturas de tela](#capturas-de-tela)
+- [Autor](#autor)
 
-6. Regras de validação
-    Campo Tipo esperado Regra
-    city Texto
-    obrigatório
-    Depois de trim(), deve ter pelo menos 2 caracteres.
-    streetName Texto
-    obrigatório
-    Depois de trim(), deve ter pelo menos 2 caracteres.
-    streetNumber Número inteiro Deve ser maior do que 0.
-    areaSize Número Deve ser finito e maior do que 0.
-    hasAC Booleano Deve resultar directamente do estado do checkbox.
-    yearBuilt Número inteiro Entre 1900 e o ano actual.
-    rentPrice Número Deve ser finito e maior do que 0.
-    dateAvailable Data obrigatória Deve ser preenchida através do input de data.
-    Critério: Se existir pelo menos um erro, o apartamento não pode ser guardado. A
-    aplicação deve explicar ao utilizador o que precisa de corrigir.
+---
 
-7. Contrato de persistência com localStorage
-    Todos os apartamentos devem ser guardados numa única chave chamada
-    renteaseFlats. Filtros, ordenação e mensagens temporárias pertencem apenas ao
-    estado da interface e não devem ser guardados.
-    const STORAGE_KEY = "renteaseFlats";
-    loadFlats() // devolve o array guardado ou []
-    saveFlats(flats) // guarda o array actualizado
-    • Ao abrir uma página, recuperar os apartamentos através de loadFlats().
-    • Depois de criar, favoritar, desfavoritar ou eliminar, chamar saveFlats(flats).
-    • Depois de guardar, voltar a renderizar a interface com o array actualizado.
-    • Se a chave ainda não existir, trabalhar com um array vazio.
-    • Se os dados não puderem ser lidos, mostrar uma mensagem simples e evitar
-    que a página deixe de funcionar.
+## Sobre o projeto
 
-8. Filtros, ordenação e favoritos
-    a) Filtros
-        a. Cidade: mostrar apenas a cidade escolhida ou escrita pelo utilizador.
-        b. Preço: permitir definir preço mínimo, máximo ou ambos.
-        c. Área: permitir definir área mínima, máxima ou ambas.
-        d. Um campo de filtro vazio não deve excluir apartamentos.
-        e. Os filtros podem funcionar em conjunto.
-    b) Ordenação
-        a. Cidade por ordem alfabética.
-        b. Preço do menor para o maior.
-        c. Área da menor para a maior.
-        d. A ordenação deve ser aplicada ao resultado já filtrado, sem alterar os
-        dados guardados de forma desnecessária.
-    c) Favoritos
-        a. O botão de favorito alterna isFavourite entre true e false.
-        b. A Home apresenta apenas apartamentos favoritos.
-        c. Remover dos favoritos não elimina o apartamento.
-        d. A alteração deve continuar visível depois de recarregar o browser.
+O **RentEase** foi criado para facilitar a organização de um portfólio de apartamentos destinados a arrendamento. Através de uma interface simples, o utilizador consegue cadastrar cada imóvel com os seus dados principais, acompanhar quantos apartamentos possui, marcar os favoritos e ordenar a lista conforme a necessidade (por cidade, preço ou área).
 
-9. Interface e responsive design
-    a) Usar header, nav, main, section, form, label e outros elementos semânticos
-    adequados.
-    b) Associar cada label ao respectivo input.
-    c) Garantir contraste, texto legível, foco visível e botões com nomes claros.
-    d) Utilizar Flexbox ou Grid com intenção e evitar larguras fixas que quebrem em
-    ecrãs pequenos.
-    e) Em mobile, permitir que tabelas tenham scroll horizontal ou sejam
-    substituídas por cards legíveis.
-    f) Apresentar feedback visível para sucesso, erro, lista vazia e ausência de
-    resultados de filtro.
+Todos os dados são guardados no **`localStorage`** do navegador, o que significa que as informações permanecem disponíveis entre sessões sem a necessidade de um servidor ou banco de dados externo.
 
-10. Organização mínima dos ficheiros
-        rentease/
-        index.html
-        flats.html
-        new-flat.html
-        css/
-        styles.css
-        js/
-        storage.js
-        home.js
-        flats.js
-        new-flat.js
-        README.md 
+---
 
-Podes criar funções auxiliares adicionais quando isso tornar o código mais legível.
-Evita copiar a mesma lógica de localStorage para todos os ficheiros: coloca
-loadFlats e saveFlats em storage.js e inclui esse script antes do script específico da
-página.
+## Funcionalidades
 
-11. Plano de desenvolvimento em cinco dias
-    Momento Foco Gate observável
-    Dia 1 Estrutura e dados Três páginas ligadas, CSS base, modelo Flat definido
-    e exercício de localStorage concluído.
-    Dia 2 Novo apartamento Formulário validado guarda um objecto e os dados
-    sobrevivem a reload.
-    Dia 3 Listagem e acções Todos os apartamentos aparecem; favorito e eliminar
-    actualizam localStorage e DOM.
-    Dia 4 Filtros e ordenação Filtros combinados e três ordenações funcionam sem
-    alterar os dados originais.
-    Dia 5 Home, responsive e
-    qualidade
-    Favoritos na Home, estados vazios, testes, README e
-    histórico Git revistos.
+### Navegação
 
-12. Critérios de aceitação
-    a) Na primeira utilização, a aplicação abre sem erros e apresenta os estados
-    vazios correctos.
-    b) Um apartamento válido fica visível depois de guardar e continua disponível
-    após reload.
-    c) Dados inválidos não são guardados e produzem mensagens compreensíveis.
-    d) Os filtros de cidade, preço e área funcionam isoladamente e em conjunto.
-    e) A ordenação por cidade, preço e área produz a ordem esperada.
-    f) Marcar ou desmarcar favorito actualiza a Home e persiste após reload.
-    g) Eliminar remove apenas o apartamento escolhido e não afecta os restantes.
-    h) A aplicação continua utilizável em desktop e num ecrã mobile.
-    i) A consola do browser não apresenta erros durante os fluxos principais.
-    j) O README explica como abrir, testar e utilizar a aplicação.
+O site é composto por 3 páginas, acessíveis a partir de uma navbar fixa presente em todas elas:
+
+| Botão | Ação |
+|---|---|
+| **Resumo** | Leva à página inicial, com o panorama geral do portfólio. |
+| **Apartamentos** | Leva à listagem completa dos imóveis cadastrados. |
+| **Cadastrar** | Leva ao formulário de cadastro de um novo apartamento. |
+
+### Página Resumo
+
+Página inicial do site. Apresenta um resumo rápido do portfólio, exibindo:
+
+- **Total de apartamentos cadastrados** (contador numérico).
+- **Total de apartamentos favoritados** (contador numérico).
+
+### Página Cadastrar
+
+Formulário utilizado para cadastrar um novo apartamento no portfólio. Os campos solicitados são:
+
+- **Cidade**
+- **Rua**
+- **Número da casa**
+- **Área do imóvel** (m²)
+- **Ano** do imóvel
+- **Valor** do arrendamento
+- **Ar condicionado** (possui ou não)
+- **Disponibilidade** (data a partir da qual o imóvel fica disponível para arrendar)
+
+**Validação:** se algum campo obrigatório for preenchido incorretamente ou deixado em branco, o cadastro **não é salvo**. Nesse caso:
+
+- É exibida uma **mensagem de erro** informando o problema.
+- Os campos inválidos/incompletos recebem uma **borda vermelha**, indicando visualmente onde está o erro.
+
+**Após o cadastro com sucesso:** é aberto um **modal** com duas opções:
+
+1. Continuar cadastrando outro apartamento (permanece na página de Cadastro).
+2. Ir para a página **Apartamentos**, para visualizar o imóvel recém-cadastrado.
+
+### Página Apartamentos
+
+Exibe todos os apartamentos cadastrados em formato de **cards**. Cada card contém:
+
+- **Número identificador** do cadastro (referente à ordem/ID de criação).
+- Todos os dados preenchidos no cadastro (cidade, rua, número, área, ano, valor, ar condicionado, disponibilidade).
+- **Checkbox de favorito**, para marcar/desmarcar o apartamento como favorito.
+- **Botão de eliminar**, que abre um modal de confirmação antes de remover definitivamente o cadastro.
+
+**Filtros e ordenação:** no fim da página há 4 botões para reorganizar os cards exibidos:
+
+| Botão | Efeito |
+|---|---|
+| **Cidade (A–Z)** | Ordena os cards por cidade, em ordem alfabética crescente. |
+| **Preço (crescente)** | Ordena os cards do menor para o maior valor. |
+| **Área (decrescente)** | Ordena os cards da maior para a menor área. |
+| **Limpar** | Remove qualquer ordenação aplicada e retorna os cards à ordem original de cadastro. |
+
+---
+
+## Tecnologias utilizadas
+
+- **HTML5** — estrutura das páginas.
+- **CSS3** — estilização e layout.
+- **JavaScript** — lógica de validação, filtros, modais e manipulação do DOM.
+- **localStorage** — persistência dos dados dos apartamentos diretamente no navegador, sem necessidade de backend.
+
+---
+
+## Como executar o projeto
+
+Por se tratar de um projeto em HTML, CSS e JavaScript puro, não é necessário instalar dependências.
+
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/pflt/projeto-2-TechOf.git
+   ```
+2. Entre na pasta do projeto:
+   ```bash
+   cd rentease
+   ```
+
+> Como os dados são salvos via `localStorage`, eles ficam vinculados ao navegador e ao domínio/porta usados para abrir o projeto. Limpar os dados de navegação do site apaga o portfólio cadastrado.
+
+---
+
+## Estrutura de pastas
+
+> Estrutura de referência 
+
+```
+rentease/
+├── index.html           # Página Resumo
+├── apartamentos.html    # Página Apartamentos
+├── cadastrar.html       # Página Cadastrar
+├── css/
+│   └── style.css
+├── js/
+│   ├── resumo.js
+│   ├── apartamentos.js
+│   └── cadastrar.js
+└── README.md
+```
+
+---
+
+## Capturas de tela da pagina
+
+**Página Resumo**
+
+![Página Resumo](./imgs/Screenshot-Resumo.png)
+
+**Página Cadastrar**
+
+![Página Cadastrar](./imgs/Screenshot-Cadastrar.png)
+
+**Página Apartamentos**
+
+![Página Apartamentos](./imgs/Screenshot-Aprtmanetos.png)
+
+---
+
+## Autor
+
+Desenvolvido por **Pedro Terrone**.

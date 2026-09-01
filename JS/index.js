@@ -3,10 +3,12 @@ const containerNumeros = document.querySelector(".resumo-cadastrados");
 const numeroLikes = document.querySelector(".likes-cadastrados");
 const containerLikes = document.querySelector(".resumo-favoritos");
 
-const apartamentosCriados = JSON.parse(localStorage.getItem("apartamentos")) || [];
+/*const apartamentosCriados = JSON.parse(localStorage.getItem("apartamentos")) || [];*/
+const apartamentosCriados = loadFlats ();
 console.log(apartamentosCriados);
 
-const quantosChecked = JSON.parse(localStorage.getItem("quantosChecked"));
+/*const quantosChecked = JSON.parse(localStorage.getItem("quantosChecked"));*/
+const quantosChecked = loadCheckedAp();
 console.log(quantosChecked);
 
 if (apartamentosCriados !== []) {
