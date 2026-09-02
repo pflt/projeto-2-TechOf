@@ -22,17 +22,35 @@
         </nav>
     </header>
     <main>
-        <section class="filtros-apartamentos">
-            <div class="botoes-filtro">
-                <button id="button-cidade">Cidades alfabeticas</button>
-                <button id="button-preco">Preco ascendente</button>
-                <button id="button-area">Area descendente</button>
-                <button id="button-limpar">Limpar</button>
-            </div>
+        <section class="refinar-apartamentos">
+             <div class="filtro-ordenar">   
+                <div class="filtro-aps">
+                    <form class="form-filtros" action="#" method="get">
+                        <div class="filtro-cidade">
+                            <b>Cidade:</b> <input type="text" id="filtro-cidade" placeholder="Lisboa">
+                        </div>
+                        <div class="filtro-valor">
+                            <b>Valor (€):</b> <input type="text" id="filtro-valor" placeholder="500">
+                        </div>
+                        <div class="filtro-area">
+                            <b>Area (m²):</b> <input type="text" id="filtro-area" placeholder="110">
+                        </div>
+                        <div>
+                            <button type="button" id="button-aplicar">Aplicar filtros</button>
+                            <button type="button" id="button-limpar-filtro">Limpar filtros</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="botoes-ordenar">
+                    <button id="button-cidade">Cidades alfabeticas</button>
+                    <button id="button-preco">Preco ascendente</button>
+                    <button id="button-area">Area descendente</button>
+                    <button id="button-limpar">Limpar</button>
+                </div>
+            </div> 
         </section>
         <section class="apartamentos-cadastrados">
-            <P id="paragrafoNenhum"><b>Nenhum apartamento cadastrado!</b></P>
-            </div>
+            <p id="paragrafoNenhum"><b>Nenhum apartamento cadastrado!</b></p>
         </section>
         <section class="cadastrar-novo">
             <h2>Cadastre um novo apartamento</h2>

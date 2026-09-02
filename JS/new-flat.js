@@ -14,8 +14,8 @@ const buttonModalCadastrar = document.querySelector(".modal-button-cadastrar");
 const buttonModalApartamentos = document.querySelector(".modal-button-aps");
 
 function cadastrarApartamento () {
-    const cidadeValor = cidade.value.trim();
-    const ruaValor = rua.value.trim();
+    const cidadeValor = cidade.value.trim().toLowerCase();
+    const ruaValor = rua.value.trim().toLowerCase();
     const numeroRuaValor = numeroRua.value;
     const areaValor = area.value;
     const anoValor = ano.value;
@@ -90,7 +90,7 @@ quero que corrar todos os erros
     };
 */
 /*const arrApartamentos = [];   problema com napo slavar quando faz refresh*/
-const arrApartamentos = loadFlats ();
+const arrApartamentos = loadFlats();
 
 function criarApartamento(cidadeValor, ruaValor, numeroRuaValor, 
     areaValor, anoValor, valorValor, acValor,disponibilidadeValor ) {
@@ -112,7 +112,7 @@ function criarApartamento(cidadeValor, ruaValor, numeroRuaValor,
     };
     arrApartamentos.push(apartamentos);
     /*adicionar o local storage para mandar informacao a outra pagina*/
-    saveFlats(apartamentosCriados); 
+    saveFlats(arrApartamentos); 
     console.log(arrApartamentos);
 };
 

@@ -1,4 +1,4 @@
-const STORAGE_KEY = "renteaseFlats";
+const STORAGE_KEY = "apartmentos";
 const CHECKED_KEY = "quantosChecked";
 
 function loadFlats () {

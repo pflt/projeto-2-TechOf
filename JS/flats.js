@@ -1,23 +1,29 @@
 const paragrafo = document.getElementById("paragrafoNenhum");
 const listaFlats = document.querySelector(".lista-flats");
 const listaAps = document.querySelector(".apartamentos-cadastrados");
-const filtroCidade = document.getElementById("button-cidade");
-const filtroPreco = document.getElementById("button-preco");
-const filtroArea = document.getElementById("button-area");
-const filtroLimpar = document.getElementById("button-limpar");
+const filtroCidade = document.getElementById("filtro-cidade");
+const filtroValor = document.getElementById("filtro-valor");
+const filtroArea = document.getElementById("filtro-area");
+const filtroAplicar = document.getElementById("button-aplicar");
+const filtroElminar = document.getElementById("button-limpar-filtro");
+const formfiltros = document.querySelector(".form-filtros");
+const ordenarButtonCidade = document.getElementById("button-cidade");
+const ordenarButtonPreco = document.getElementById("button-preco");
+const ordenarButtonArea = document.getElementById("button-area");
+const ordenarButtonLimpar = document.getElementById("button-limpar");
 const modal = document.getElementById("modal");
 const buttonModalDeletar = document.querySelector(".modal-button-deletar");
 const buttonModalCancelar = document.querySelector(".modal-button-cancelar");
 
 /*const apartamentosCriados = JSON.parse(localStorage.getItem("apartamentos")) || [];*/
-const apartamentosCriados = loadFlats ();
+const apartamentosCriados = loadFlats();
 console.log(apartamentosCriados);
 
 /* deu um erro pois tenho que abrir direto por um link a pagina e nao
 estou abrindo direto pelo disco, temos que ativar o live server-
 vou tusar agora o find e o find index para saber o que deletar*/
 
-if (apartamentosCriados !== []) {
+if (apartamentosCriados.length > 0) {
     paragrafo.remove();
     cardsApartamentos();
 };
@@ -67,7 +73,7 @@ buttonModalDeletar.addEventListener("click", deletarAp);
 buttonModalCancelar.addEventListener("click", cancelarAp);
 
 /*estava ater problemas em manter o favorito como favorito*/
-let quantosChecked = apartamentosCriados.filter(function (apartamento) {
+let quantosChecked = apartamentosCriados.filter(apartamento => {
     return apartamento.favorito;
 }).length;
 
@@ -165,7 +171,38 @@ function cardsApartamentos() {
     };
 };
 
-function filtrarCidade () {
+function filtrarApartamentos () {
+    const filtroCidadeValue = filtroCidade.value.trim().toLowerCase();
+    const filtroValorValue = filtroValor.value;
+    const filtroAreaValue = filtroArea.value;
+    const resultado = apartamentosCriados.filter(apartamento => {
+        return (
+            (filtroCidadeValue === "" || apartamento.cidade === filtroCidadeValue) &&
+            (filtroValorValue === "" || apartamento.valor === filtroValorValue) &&
+            (filtroAreaValue === "" || apartamento.area === filtroAreaValue)
+        )
+    });
+    apartamentosCriados.forEach(apartamento => {
+        const divFiltros = document.getElementById(apartamento.id);
+        const estaNoFiltro = resultado.some(item => item.id === apartamento.id);
+        divFiltros.style.display = estaNoFiltro ? "flex" : "none";
+        formfiltros.reset();
+    });
+};
+
+function eliminarFiltros () {
+    apartamentosCriados.forEach(apartamento => {
+        const divFiltros = document.getElementById(apartamento.id);
+        divFiltros.style.display =  "flex";
+        formfiltros.reset();
+    });
+};
+
+
+filtroAplicar.addEventListener("click", filtrarApartamentos);
+filtroElminar.addEventListener("click", eliminarFiltros);
+
+function ordenarCidade () {
     apartamentosCriados.sort((a,b) => a.cidade.localeCompare(b.cidade)); /* localComapre (metodo de string) compara igual<> 
     mas nao numerico e sim como strings mesmo que sue ToLowerCase ele ainda sim da problemas por exemplo com acentos*/
     saveFlats(apartamentosCriados);
@@ -188,7 +225,7 @@ function filtrarCidade () {
     console.log(indexCidades);
     */
 
-function filtrarPreco () {
+function ordenarPreco () {
     apartamentosCriados.sort((a,b) => a.valor - b.valor);
     saveFlats(apartamentosCriados);
     const listaApsValor = document.querySelector(".apartamentos-cadastrados");
@@ -200,7 +237,7 @@ function filtrarPreco () {
     });
 };
 
-function filtrarArea () {
+function ordenarArea () {
     apartamentosCriados.sort((a,b) => b.area - a.area);
     /* o que importa nao e o sinal e sim quem vem antes e depois a ou b*/
     saveFlats(apartamentosCriados);
@@ -213,7 +250,7 @@ function filtrarArea () {
     });
 };
 
-function filtrarLimpar () {
+function ordenarLimpar () {
     apartamentosCriados.sort((a,b) => a.id - b.id);
     saveFlats(apartamentosCriados);
     const listaApsId = document.querySelector(".apartamentos-cadastrados");
@@ -225,10 +262,10 @@ function filtrarLimpar () {
     });
 };
 
-filtroCidade.addEventListener("click", filtrarCidade);
-filtroPreco.addEventListener("click", filtrarPreco);
-filtroArea.addEventListener("click", filtrarArea);
-filtroLimpar.addEventListener("click", filtrarLimpar);
+ordenarButtonCidade.addEventListener("click", ordenarCidade);
+ordenarButtonPreco.addEventListener("click", ordenarPreco);
+ordenarButtonArea.addEventListener("click", ordenarArea);
+ordenarButtonLimpar.addEventListener("click", ordenarLimpar);
 
 
 

@@ -217,9 +217,22 @@ main {
 
 /* FLATS.HTML*/
 
-/*SECTION FILTROS-APARTAMENTOS*/
+/*SECTION REFINAR-APARTAMENTOS*/
+.filtro-ordenar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
-.botoes-filtro {
+.filtro-aps form {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    margin: 1em 0;
+}
+
+.botoes-ordenar {
     display: flex;
     justify-content: center;
     margin: 0 auto;
@@ -227,7 +240,7 @@ main {
     gap: 1.5em;
 }
 
-.botoes-filtro button {
+.botoes-ordenar button {
     background-color: var(--box-color);
     border-radius: 4px;
     color: rgb(0, 0, 0);
@@ -237,7 +250,7 @@ main {
     padding: 0.7em 1.2em;
 }
 
-.botoes-filtro button:hover {
+.botoes-ordenar button:hover {
     transform: scale(1.1);
 }
 
@@ -384,7 +397,6 @@ main {
 /* SECTION MODAL*/
 
 #modal {
-    display: none;
     height: 100%;
     width: 100%;
     position: fixed;
@@ -451,8 +463,8 @@ main {
 }
 
 .cadastrar-imovel {
-    width: 80%;
-    padding: 2em 0;
+    width: 90%;
+    padding: 2em 1em;
     display: flex;
     justify-content: center;
     color: var(--font-color2);
