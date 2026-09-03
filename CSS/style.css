@@ -218,21 +218,39 @@ main {
 /* FLATS.HTML*/
 
 /*SECTION REFINAR-APARTAMENTOS*/
-.filtro-ordenar {
+.refinar-apartamentos {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.filtro-aps form {
+.form-filtros {
+    width: 80%;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 1em;
     margin: 1em 0;
 }
 
+.filtro-buttons button {
+    background-color: var(--box-color);
+    border-radius: 4px;
+    color: rgb(0, 0, 0);
+    border-color: var(--navbars-color);
+    font-size: 0.9em;
+    cursor: pointer;
+    padding: 0.3em 1.0em;
+}
+
+.filtro-buttons button:hover {
+    transform: scale(1.1);
+}
+
 .botoes-ordenar {
+    width: 80%;
     display: flex;
     justify-content: center;
     margin: 0 auto;

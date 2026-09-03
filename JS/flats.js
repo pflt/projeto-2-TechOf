@@ -2,19 +2,22 @@ const paragrafo = document.getElementById("paragrafoNenhum");
 const listaFlats = document.querySelector(".lista-flats");
 const listaAps = document.querySelector(".apartamentos-cadastrados");
 const filtroCidade = document.getElementById("filtro-cidade");
-const filtroValor = document.getElementById("filtro-valor");
-const filtroArea = document.getElementById("filtro-area");
+const filtroValorMaximo = document.getElementById("filtro-valor-maximo");
+const filtroValorMinimo = document.getElementById("filtro-valor-minimo");
+const filtroAreaMaximo = document.getElementById("filtro-area-maximo");
+const filtroAreaMinimo = document.getElementById("filtro-area-minimo");
 const filtroAplicar = document.getElementById("button-aplicar");
 const filtroElminar = document.getElementById("button-limpar-filtro");
 const formfiltros = document.querySelector(".form-filtros");
 const ordenarButtonCidade = document.getElementById("button-cidade");
-const ordenarButtonPreco = document.getElementById("button-preco");
-const ordenarButtonArea = document.getElementById("button-area");
+const ordenarButtonPrecoAscendente = document.getElementById("button-preco-ascendente");
+const ordenarButtonPrecoDescendente = document.getElementById("button-preco-descendente");
+const ordenarButtonAreaAscendente = document.getElementById("button-area-ascendente");
+const ordenarButtonAreaDescendente = document.getElementById("button-area-descendente");
 const ordenarButtonLimpar = document.getElementById("button-limpar");
 const modal = document.getElementById("modal");
 const buttonModalDeletar = document.querySelector(".modal-button-deletar");
 const buttonModalCancelar = document.querySelector(".modal-button-cancelar");
-
 /*const apartamentosCriados = JSON.parse(localStorage.getItem("apartamentos")) || [];*/
 const apartamentosCriados = loadFlats();
 console.log(apartamentosCriados);
@@ -173,13 +176,17 @@ function cardsApartamentos() {
 
 function filtrarApartamentos () {
     const filtroCidadeValue = filtroCidade.value.trim().toLowerCase();
-    const filtroValorValue = filtroValor.value;
-    const filtroAreaValue = filtroArea.value;
+    const filtroValorMaximoValue = filtroValorMaximo.value;
+    const filtroValorMinimoValue = filtroValorMinimo.value;
+    const filtroAreaMaximoValue = filtroAreaMaximo.value;
+    const filtroAreaMinimoValue = filtroAreaMinimo.value;
     const resultado = apartamentosCriados.filter(apartamento => {
         return (
             (filtroCidadeValue === "" || apartamento.cidade === filtroCidadeValue) &&
-            (filtroValorValue === "" || apartamento.valor === filtroValorValue) &&
-            (filtroAreaValue === "" || apartamento.area === filtroAreaValue)
+            (filtroValorMaximoValue === "" || apartamento.valor <= filtroValorMaximoValue) &&
+            (filtroValorMinimoValue === "" || apartamento.valor >= filtroValorMinimoValue) &&
+            (filtroAreaMaximoValue === "" || apartamento.area <= filtroAreaMaximoValue) &&
+            (filtroAreaMinimoValue === "" || apartamento.area >= filtroAreaMinimoValue)
         )
     });
     apartamentosCriados.forEach(apartamento => {
@@ -203,11 +210,12 @@ filtroAplicar.addEventListener("click", filtrarApartamentos);
 filtroElminar.addEventListener("click", eliminarFiltros);
 
 function ordenarCidade () {
-    apartamentosCriados.sort((a,b) => a.cidade.localeCompare(b.cidade)); /* localComapre (metodo de string) compara igual<> 
-    mas nao numerico e sim como strings mesmo que sue ToLowerCase ele ainda sim da problemas por exemplo com acentos*/
-    saveFlats(apartamentosCriados);
+    const apartamentosOrdenados = apartamentosCriados.ToSorted((a,b) => a.cidade.localeCompare(b.cidade)); 
+    /* localComapre (metodo de string) compara igual<> 
+    mas nao numerico e sim como strings mesmo que sue ToLowerCase ele ainda sim da problemas por exemplo 
+    com acentos*/
     const listaApsCidade = document.querySelector(".apartamentos-cadastrados");
-    apartamentosCriados.forEach((apartamento) => {
+    apartamentosOrdenados.forEach((apartamento) => {
         const divApCidade = document.getElementById(apartamento.id);
         /*console.log("procurando:", `apartamento-${apartamento.id}`, "achou:", divApCidade);*/
         if (divApCidade) {
@@ -225,11 +233,13 @@ function ordenarCidade () {
     console.log(indexCidades);
     */
 
-function ordenarPreco () {
-    apartamentosCriados.sort((a,b) => a.valor - b.valor);
-    saveFlats(apartamentosCriados);
+function ordenarPrecoAscendente () {
+    /*tenho que mecher aqui pois o sort altera o array original ams o novo metodo
+    to sorted nao altera e como vou pensar que o button nao esta tipo submit, e nao faz f5 nao 
+    preciso ter local storage fica tudo armazenado dentro da ram*/
+    const apartamentosOrdenados = apartamentosCriados.toSorted((a,b) => a.valor - b.valor);
     const listaApsValor = document.querySelector(".apartamentos-cadastrados");
-    apartamentosCriados.forEach((apartamento) => {
+    apartamentosOrdenados.forEach((apartamento) => {
         const divApValor = document.getElementById(apartamento.id);
         if (divApValor) {
             listaApsValor.appendChild(divApValor);
@@ -237,12 +247,35 @@ function ordenarPreco () {
     });
 };
 
-function ordenarArea () {
-    apartamentosCriados.sort((a,b) => b.area - a.area);
+function ordenarPrecoDescendente () {
+    const apartamentosOrdenados = apartamentosCriados.toSorted((a,b) => b.valor - a.valor);
+    const listaApsValor = document.querySelector(".apartamentos-cadastrados");
+    apartamentosOrdenados.forEach((apartamento) => {
+        const divApValor = document.getElementById(apartamento.id);
+        if (divApValor) {
+            listaApsValor.appendChild(divApValor);
+        }
+    });
+};
+
+function ordenarAreaAscendente () {
+    const apartamentosOrdenados = apartamentosCriados.toSorted((a,b) => a.area - b.area);
     /* o que importa nao e o sinal e sim quem vem antes e depois a ou b*/
-    saveFlats(apartamentosCriados);
     const listaApsArea = document.querySelector(".apartamentos-cadastrados");
-    apartamentosCriados.forEach((apartamento) => {
+    apartamentosOrdenados.forEach((apartamento) => {
+        const divApArea = document.getElementById(apartamento.id);
+        if (divApArea) {
+            listaApsArea.appendChild(divApArea);
+        }
+    });
+};
+
+
+function ordenarAreaDescendente () {
+    const apartamentosOrdenados = apartamentosCriados.toSorted((a,b) => b.area - a.area);
+    /* o que importa nao e o sinal e sim quem vem antes e depois a ou b*/
+    const listaApsArea = document.querySelector(".apartamentos-cadastrados");
+    apartamentosOrdenados.forEach((apartamento) => {
         const divApArea = document.getElementById(apartamento.id);
         if (divApArea) {
             listaApsArea.appendChild(divApArea);
@@ -251,10 +284,9 @@ function ordenarArea () {
 };
 
 function ordenarLimpar () {
-    apartamentosCriados.sort((a,b) => a.id - b.id);
-    saveFlats(apartamentosCriados);
+    const apartamentosOrdenados = apartamentosCriados.toSorted((a,b) => a.id - b.id);
     const listaApsId = document.querySelector(".apartamentos-cadastrados");
-    apartamentosCriados.forEach((apartamento) => {
+    apartamentosOrdenados.forEach((apartamento) => {
         const divApId = document.getElementById(apartamento.id);
         if (divApId) {
             listaApsId.appendChild(divApId);
@@ -263,8 +295,10 @@ function ordenarLimpar () {
 };
 
 ordenarButtonCidade.addEventListener("click", ordenarCidade);
-ordenarButtonPreco.addEventListener("click", ordenarPreco);
-ordenarButtonArea.addEventListener("click", ordenarArea);
+ordenarButtonPrecoAscendente.addEventListener("click", ordenarPrecoAscendente);
+ordenarButtonPrecoDescendente.addEventListener("click", ordenarPrecoDescendente);
+ordenarButtonAreaAscendente.addEventListener("click", ordenarAreaAscendente);
+ordenarButtonAreaDescendente.addEventListener("click", ordenarAreaDescendente);
 ordenarButtonLimpar.addEventListener("click", ordenarLimpar);
 
 
