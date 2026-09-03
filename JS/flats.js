@@ -210,7 +210,7 @@ filtroAplicar.addEventListener("click", filtrarApartamentos);
 filtroElminar.addEventListener("click", eliminarFiltros);
 
 function ordenarCidade () {
-    const apartamentosOrdenados = apartamentosCriados.ToSorted((a,b) => a.cidade.localeCompare(b.cidade)); 
+    const apartamentosOrdenados = apartamentosCriados.toSorted((a,b) => a.cidade.localeCompare(b.cidade)); 
     /* localComapre (metodo de string) compara igual<> 
     mas nao numerico e sim como strings mesmo que sue ToLowerCase ele ainda sim da problemas por exemplo 
     com acentos*/

@@ -175,6 +175,7 @@ main {
     width: 60%;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
@@ -195,22 +196,21 @@ main {
 
 .resumo-container {
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 5em;
     padding-bottom: 1em;
 }
 
-.resumo-cadastrados,
-.resumo-favoritos {
+.resumo-container div {
     display: flex;
     gap: 0.3em;
     border-radius: 3px;
     box-shadow: 1px 1px 3px black;
     background-color: var(--main-color);
-    padding: 0.2em 1.7em;
 }
 
-.resumo-cadastrados p,
-.resumo-favoritos p {
+.resumo-container div p {
     margin: 0;
     padding: 0.8em 1.3em;
 }
