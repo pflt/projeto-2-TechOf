@@ -133,6 +133,12 @@ function cardsApartamentos() {
         for (const chave in apartamentosCriados[i]) {
             const flat = document.createElement("p");
             flat.innerText = chave + ": " + apartamentosCriados[i][chave];
+            if (chave === "valor") {
+                flat.innerText = chave + ": " + apartamentosCriados[i][chave] + "€";
+            }
+            if (chave === "area") {
+                flat.innerText = chave + ": " + apartamentosCriados[i][chave] + "m²";
+            }
             flat.classList.add("style-flat");
             /* classe para arrumar a diferenca de carcateres de cada um*/
             flat.classList.add(chave);
@@ -142,6 +148,8 @@ function cardsApartamentos() {
             }*/
             /*tenho que fazer isso se nao a chave favoritar que tive que criar depois 
             para ficar checked vai acabar aparecendo no ncard e nao quero*/
+            if (chave === "id")
+                flat.classList.add("hidden");
             if (chave === "favorito") {
                 flat.classList.add("hidden");
             }

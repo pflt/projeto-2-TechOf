@@ -131,6 +131,7 @@ main {
     justify-content: center;
     padding: 3em 0 7em 0;
     margin: 0 auto;
+    gap: 5em;
 }
 
 .introducao-titulo {
@@ -154,9 +155,8 @@ main {
 }
 
 .introducao-paragrafo p {
-    width: 60%;
     font-size: 1.2em;
-    padding: 0.5em 0.5em;
+    padding: 0.5em;
     margin: 0;
     font-family: 'Courier New';
     color: var(--font-color2);
@@ -172,10 +172,9 @@ main {
 /* SECTION CONTADOR-APARTAMENTOS */
 
 .contador-apartamentos {
-    width: 60%;
+    width: 80%;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
@@ -188,6 +187,9 @@ main {
 }
 
 .contador-apartamentos h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 1.8em;
     font-family: Calibri;
     color: var(--navbars-color);
@@ -198,13 +200,14 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5em;
+    flex-wrap: wrap;
+    gap: 3em;
     padding-bottom: 1em;
 }
 
 .resumo-container div {
     display: flex;
-    gap: 0.3em;
+    width: 14em;
     border-radius: 3px;
     box-shadow: 1px 1px 3px black;
     background-color: var(--main-color);
@@ -233,13 +236,27 @@ main {
     justify-content: center;
     gap: 1em;
     margin: 1em 0;
+    padding: 1em 1em;
+    color: var(--font-color2);
+    background-color: var(--box-color);
+    box-shadow: var(--box-shadow);
+    border-radius: 8px;
+    border: var(--box-border);
+    backdrop-filter: var(--box-blur);
+    -webkit-backdrop-filter: var(--webkitbox-blur);
+}
+
+
+.filtro-buttons {
+    display: flex;
+    gap: 1.3em;
 }
 
 .filtro-buttons button {
-    background-color: var(--box-color);
-    border-radius: 4px;
-    color: rgb(0, 0, 0);
-    border-color: var(--navbars-color);
+    border: 2px solid var(--navbars-color);
+    border-radius: 3px;
+    color: var(--font-color2);
+    background-color: var(--main-color);
     font-size: 0.9em;
     cursor: pointer;
     padding: 0.3em 1.0em;
@@ -253,6 +270,7 @@ main {
     width: 80%;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     margin: 0 auto;
     padding :2em 0;
     gap: 1.5em;
@@ -275,16 +293,16 @@ main {
 /*APARTAMENTOS-CADASTRADOS*/
 
 .apartamentos-cadastrados {
-    width: 85%;
+    width: 90%;
     display: flex;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     margin: 0 auto 1em auto;
     gap: 1em;
 }
 
-#paragrafoNenhum,
-.style-div-flats {
+#paragrafoNenhum {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -297,8 +315,25 @@ main {
     -webkit-backdrop-filter: var(--webkitbox-blur);
 }
 
+.style-div-flats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);  
+    gap: 1em;
+    margin: 0 auto 1em auto;
+    color: var(--font-color2);
+    background-color: var(--box-color);
+    box-shadow: var(--box-shadow);
+    border-radius: 8px;
+    border: var(--box-border);
+    backdrop-filter: var(--box-blur);
+    -webkit-backdrop-filter: var(--webkitbox-blur);
+    padding: 1em;
+    border: 1px solid black;
+    box-shadow: 1px 1px 2px black;
+}
+
 .style-div-flats p {
-    border-bottom: 1px dotted black;
+    margin: 0;
 }
 
 .lista-flats {
@@ -307,15 +342,6 @@ main {
     justify-content: center;
     align-items: center;
     gap: 1em;
-}
-
-.style-div-flats {
-    width: 100%;
-    display: flex;
-    gap: 1em;
-    padding: 1em;
-    border: 1px solid black;
-    box-shadow: 1px 1px 2px black;
 }
 
 .numero-lista-aps {
@@ -331,14 +357,13 @@ main {
     font-family: Arial;
 }
 
-
-.id {width: 19ch; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
-.cidade {width: 16ch; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
-.rua {width: 13ch; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
-.numero {width: 12ch; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
-.area {width: 10ch; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
-.valor {width: 13ch; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
-.ac {width: 9ch; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.numero-lista-aps {width: 1.5em; height: 1em;}
+.cidade {width: 10em; height: 2em;}
+.rua {width: 10em; height: 2em; }
+.numero {width: 10em; height: 2em;}
+.area {width: 10em; height: 2em; }
+.valor {width: 10em; height: 2em; }
+.ac {width: 10em; height: 2em; }
 
 .hidden {
     display: none;
@@ -396,6 +421,7 @@ main {
 
 .cadastrar-novo h2 {
     color: var(--navbars-color);
+    text-align: center;
 }
 
 .cadastrar-novo a {
@@ -504,6 +530,11 @@ main {
 .input-questionario div {
     display: flex;
     gap: 0.5em;
+}
+
+.label-input-newflat {
+    display: flex;
+    align-items: center;
 }
 
 .input-button {
