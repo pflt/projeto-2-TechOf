@@ -200,7 +200,7 @@ function filtrarApartamentos () {
     apartamentosCriados.forEach(apartamento => {
         const divFiltros = document.getElementById(apartamento.id);
         const estaNoFiltro = resultado.some(item => item.id === apartamento.id);
-        divFiltros.style.display = estaNoFiltro ? "flex" : "none";
+        divFiltros.style.display = estaNoFiltro ? "grid" : "none";
         formfiltros.reset();
     });
 };
@@ -208,7 +208,7 @@ function filtrarApartamentos () {
 function eliminarFiltros () {
     apartamentosCriados.forEach(apartamento => {
         const divFiltros = document.getElementById(apartamento.id);
-        divFiltros.style.display =  "flex";
+        divFiltros.style.display =  "grid";
         formfiltros.reset();
     });
 };
