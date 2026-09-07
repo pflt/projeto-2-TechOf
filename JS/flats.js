@@ -18,6 +18,7 @@ const ordenarButtonLimpar = document.getElementById("button-limpar");
 const modal = document.getElementById("modal");
 const buttonModalDeletar = document.querySelector(".modal-button-deletar");
 const buttonModalCancelar = document.querySelector(".modal-button-cancelar");
+
 /*const apartamentosCriados = JSON.parse(localStorage.getItem("apartamentos")) || [];*/
 const apartamentosCriados = loadFlats();
 console.log(apartamentosCriados);
@@ -76,9 +77,9 @@ buttonModalDeletar.addEventListener("click", deletarAp);
 buttonModalCancelar.addEventListener("click", cancelarAp);
 
 /*estava ater problemas em manter o favorito como favorito*/
-let quantosChecked = apartamentosCriados.filter(apartamento => {
+/*let quantosChecked = apartamentosCriados.filter(apartamento => {
     return apartamento.favorito;
-}).length;
+}).length;*/
 
 function favoritarAp (event) {
     const idSelecionado = event.target.id;
@@ -90,19 +91,7 @@ function favoritarAp (event) {
     apartamentosCriados[indiceFavorito].favorito = event.target.checked;
     console.log("apartamentos atualizado:" + apartamentosCriados[indiceFavorito]);
     saveFlats(apartamentosCriados);
-    if (event.target.checked) {
-        quantosChecked += 1;
-        /*console.log("checked");
-        console.log(quantosChecked);*/
-    } else {
-        quantosChecked -= 1;
-        /*console.log("unchecked");
-        console.log(quantosChecked);*/
-    }
-    saveCheckedAp(quantosChecked);
-};
-    /*
-    if (event.target.checked) {
+    /*if (event.target.checked) {
         quantosChecked += 1;
         console.log("checked");
         console.log(quantosChecked);
@@ -110,8 +99,10 @@ function favoritarAp (event) {
         quantosChecked -= 1;
         console.log("unchecked");
         console.log(quantosChecked);
-    };
-    localStorage.setItem("likes", JSON.stringify(quantosChecked));
+    }
+    saveCheckedAp(quantosChecked);*/
+};
+    /*localStorage.setItem("likes", JSON.stringify(quantosChecked));
  nao esta salvando o refresh nao fica salvo*/
 
 

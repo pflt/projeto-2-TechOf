@@ -54,13 +54,20 @@ function cadastrarApartamento () {
     };
 
     /* se fizer sem o let erro e esse if, colcoando um else no if em cima ele rodaria 7 vezes*/ 
+    /*adicionar o try/catch */
     if (!temErro) {
-        criarApartamento(cidadeValor, ruaValor, numeroRuaValor, 
-        areaValor, anoValor, valorValor, acValor,disponibilidadeValor);
-        modalCadastro.classList.remove("hidden");
-        /*alert("Seu apartamento foi cadastrado com sucesso!" + "\n" + "Aceda o portal Apartamentos para ve-lo!");*/
-        form.reset(); /* tive que fazer pois estava enviando mas nao resentando os campos*/
-    } 
+        try {
+            criarApartamento(cidadeValor, ruaValor, numeroRuaValor, 
+                areaValor, anoValor, valorValor, acValor,disponibilidadeValor);
+                modalCadastro.classList.remove("hidden");
+                /*alert("Seu apartamento foi cadastrado com sucesso!" + "\n" + "Aceda o portal Apartamentos para ve-lo!");*/
+            form.reset(); /* tive que fazer pois estava enviando mas nao resentando os campos*/
+    } catch (erro) {
+        console.error("Nao foi possivel guardar o apartemnto", erro);
+        alert("Nao foi possivel guardar o apartemnto"); /*alert so aceita um argumento*/
+    }
+    };
+         
 };
 
 function voltarCadastrarAp () {

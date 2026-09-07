@@ -11,17 +11,21 @@ const containerAreaMedia = document.querySelector(".resumo-areaMedia");
 const apartamentosCriados = loadFlats ();
 console.log(apartamentosCriados);
 
-/*const quantosChecked = JSON.parse(localStorage.getItem("quantosChecked"));*/
+/*const quantosChecked = JSON.parse(localStorage.getItem("quantosChecked"));
 const quantosChecked = loadCheckedAp();
 console.log(quantosChecked);
+*/
 
-if (apartamentosCriados !== []) {
+if (apartamentosCriados.length !== 0) { /*array compara po referencia nao por conteudo, 
+    [] cria sempre um objeto novo - apartamentosCriados !== [] - ja numers se comparam */
     numeroCadastrados.remove();
     numeroPrecoMedio.remove();
     numeroAreaMedio.remove();
+    numeroLikes.remove();
     numerosAps();
     mediaRenda();
     mediaArea();
+    likesApartamentos();
 }
 
 function numerosAps () {
@@ -30,6 +34,7 @@ function numerosAps () {
     containerNumeros.appendChild(paragrafoNumber);
 };
 
+/*
 if (quantosChecked !== 0) {
     numeroLikes.remove();
     likesApartamentos();
@@ -40,6 +45,22 @@ function likesApartamentos () {
     paragrafoLikes.innerHTML = quantosChecked;
     containerLikes.appendChild(paragrafoLikes);
 };
+
+ 
+if (apartamentosCriados !== []) {
+    numeroLikes.remove();
+    likesApartamentos();
+};
+*/
+
+function likesApartamentos () {
+    const likesAps = apartamentosCriados.filter((apartamento) => apartamento.favorito === true);
+    const quantidadeLikes = likesAps.length;
+    const paragrafoLikes = document.createElement("p");
+    paragrafoLikes.innerHTML = quantidadeLikes;
+    containerLikes.appendChild(paragrafoLikes);
+};
+
 
 function mediaRenda () {
     const numeroPrecoMedioMap = apartamentosCriados.map(apartamento => Number(apartamento.valor));
