@@ -193,7 +193,6 @@ main {
     font-size: 1.8em;
     font-family: Calibri;
     color: var(--navbars-color);
-    font-size: 1.8em;
 }
 
 .resumo-container {
@@ -364,6 +363,7 @@ main {
 .area {width: 10em; height: 2em; }
 .valor {width: 10em; height: 2em; }
 .ac {width: 10em; height: 2em; }
+.ano {width: 10em; height: 2em; }
 
 .hidden {
     display: none;
@@ -617,7 +617,195 @@ main {
 }
 
 
+@media (max-width: 800px) {
+    header {
+        height: auto;
+        min-height: calc(100vh - 88vh);
+    }
 
+    nav {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .logo-menu {
+        width: 100%;
+        margin: 0.7em;
+        justify-content: center;
+        padding: 0;
+    }
+
+    #botoes-pesquisa {
+        width: 90%;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5em;
+        padding: 0;
+        margin-bottom: 1em;
+    }
+
+    main {
+        height: auto;
+        min-height: calc(100vh - 24vh);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    footer {
+        height: auto;
+        min-height: calc(100vh - 88vh);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+        margin: 0;
+    }
+    
+    .contacto-footer {
+        width: 100%;
+        justify-content: center;
+        padding-left: 0;
+        margin-top: 0.5em;
+    }
+
+    .redes-sociais {
+        width: 100%;
+        justify-content: center;
+        gap: 0.2em;
+        padding-right: 0;
+    }
+
+    .introducao {
+        width: 95%;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        gap: 4em;
+        margin: 1em auto;
+    }
+
+    .introducao-paragrafo {
+        width: 90%;
+        margin-bottom: 1em;
+    }
+
+    .contador-apartamentos {
+        width: 85%;
+        margin-bottom: 1em;
+    }
+
+    .resumo-container {
+        gap: 1em;
+    }
+
+    .resumo-container div {
+        width: 12em;
+    }
+
+    .form-filtros {
+        width: 85%;
+        gap: 1em;
+        flex-direction: column;
+    }
+
+
+    .filtro-valor,
+    .filtro-area,
+    .filtro-cidade {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+    }
+
+    .form-filtros div input {
+        width: 8em;
+    }
+
+    .filtro-buttons {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1em;
+    }
+
+    .botoes-ordenar {
+        width: 95%;
+        padding : 0;
+        gap: 0.5em;
+        margin: 1.5em auto;
+    }
+
+    .botoes-ordenar button {
+        width: 8em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        font-size: 1em;
+        cursor: pointer;
+        padding: 0.1em;
+    }
+
+    .apartamentos-cadastrados {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 0 auto;
+    }
+
+    .style-div-flats {
+        width: 95%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 217px), 1fr));  
+        gap: 1em;
+        margin: 0;
+    }
+
+    /*tive que uisar esse comando para essa classe nao ser incluida para o id 
+    nao ficar visivel*/
+    .style-flat:not(.hidden) {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .cadastrar-novo {
+        width: 80%;
+    }
+
+    .container-modal {
+        width: 90%;
+        padding: 1em;
+    }
+
+    #newflat-main {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+    }
+    
+    .input-questionario div {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+    }
+
+    .input-button {
+        align-items: center;
+    }
+
+    #botao-cadastrar {
+        width: 70%;
+    }
+
+
+}
 
 
 
