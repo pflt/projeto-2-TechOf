@@ -62,10 +62,10 @@ function cadastrarApartamento () {
                 modalCadastro.classList.remove("hidden");
                 /*alert("Seu apartamento foi cadastrado com sucesso!" + "\n" + "Aceda o portal Apartamentos para ve-lo!");*/
             form.reset(); /* tive que fazer pois estava enviando mas nao resentando os campos*/
-    } catch (erro) {
-        console.error("Nao foi possivel guardar o apartemnto", erro);
-        alert("Nao foi possivel guardar o apartemnto"); /*alert so aceita um argumento*/
-    }
+        } catch (erro) {
+            console.error("Nao foi possivel guardar o apartemnto", erro);
+            alert("Nao foi possivel guardar o apartemnto"); /*alert so aceita um argumento*/
+        }
     };
          
 };
