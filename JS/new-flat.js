@@ -120,7 +120,7 @@ function criarApartamento(cidadeValor, ruaValor, numeroRuaValor,
     arrApartamentos.push(apartamentos);
     /*adicionar o local storage para mandar informacao a outra pagina*/
     saveFlats(arrApartamentos); 
-    console.log(arrApartamentos);
+    /*console.log(arrApartamentos);*/
 };
 
     /* se fizesse desse jeito corria o primeiro erro e ja parava

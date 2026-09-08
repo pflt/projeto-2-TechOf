@@ -46,6 +46,8 @@ Página inicial do site. Apresenta um resumo rápido do portfólio, exibindo:
 
 - **Total de apartamentos cadastrados** (contador numérico).
 - **Total de apartamentos favoritados** (contador numérico).
+- **Valor médio** dos apartamentos cadastrados.
+- **Área média** dos apartamentos cadastrados.
 
 ### Página Cadastrar
 
@@ -74,20 +76,33 @@ Formulário utilizado para cadastrar um novo apartamento no portfólio. Os campo
 
 Exibe todos os apartamentos cadastrados em formato de **cards**. Cada card contém:
 
-- **Número identificador** do cadastro (referente à ordem/ID de criação).
 - Todos os dados preenchidos no cadastro (cidade, rua, número, área, ano, valor, ar condicionado, disponibilidade).
 - **Checkbox de favorito**, para marcar/desmarcar o apartamento como favorito.
 - **Botão de eliminar**, que abre um modal de confirmação antes de remover definitivamente o cadastro.
 
-**Filtros e ordenação:** no fim da página há 4 botões para reorganizar os cards exibidos:
+**Filtros:** no topo da página é possível filtrar os apartamentos exibidos por:
 
+| Campo | Efeito |
+|---|---|
+| **Cidade** | Exibe apenas os apartamentos da cidade informada. |
+| **Valor Máximo (€)** | Exibe apenas apartamentos com valor até o informado. |
+| **Valor Mínimo (€)** | Exibe apenas apartamentos com valor a partir do informado. |
+| **Área Máxima (m²)** | Exibe apenas apartamentos com área até a informada. |
+| **Área Mínima (m²)** | Exibe apenas apartamentos com área a partir da informada. |
+
+Os botões **Aplicar filtros** e **Limpar filtros** aplicam ou removem os filtros preenchidos.
+ 
+**Ordenação:** no fim da página há botões para reorganizar os cards exibidos:
+ 
 | Botão | Efeito |
 |---|---|
-| **Cidade (A–Z)** | Ordena os cards por cidade, em ordem alfabética crescente. |
-| **Preço (crescente)** | Ordena os cards do menor para o maior valor. |
-| **Área (decrescente)** | Ordena os cards da maior para a menor área. |
-| **Limpar** | Remove qualquer ordenação aplicada e retorna os cards à ordem original de cadastro. |
-
+| **Cidades alfabéticas** | Ordena os cards por cidade, em ordem alfabética crescente. |
+| **Preço ascendente** | Ordena os cards do menor para o maior valor. |
+| **Preço descendente** | Ordena os cards do maior para o menor valor. |
+| **Área ascendente** | Ordena os cards da menor para a maior área. |
+| **Área descendente** | Ordena os cards da maior para a menor área. |
+| **Limpar** | Remove qualquer ordenação/filtro aplicado e retorna os cards à ordem original de cadastro. |
+ 
 ---
 
 ## Tecnologias utilizadas
@@ -123,14 +138,15 @@ Por se tratar de um projeto em HTML, CSS e JavaScript puro, não é necessário 
 ```
 rentease/
 ├── index.html           # Página Resumo
-├── apartamentos.html    # Página Apartamentos
-├── cadastrar.html       # Página Cadastrar
+├── flats.html           # Página Apartamentos
+├── new-flat.html        # Página Cadastrar
 ├── css/
 │   └── style.css
 ├── js/
-│   ├── resumo.js
-│   ├── apartamentos.js
-│   └── cadastrar.js
+│   ├── index.js
+│   ├── flats.js
+│   ├── new-flat.js
+│   └── storage.js
 └── README.md
 ```
 
@@ -140,15 +156,27 @@ rentease/
 
 **Página Resumo**
 
-![Página Resumo](./imgs/Screenshot-Resumo.png)
+![Página Resumo](./imgs/Screenshot%20-%20Home%20Page.png)
 
 **Página Cadastrar**
 
-![Página Cadastrar](./imgs/Screenshot-Cadastrar.png)
+![Página Cadastrar](./imgs/Screenshot%20-%20Cadastrar%20Apartamento.png)
 
 **Página Apartamentos**
 
-![Página Apartamentos](./imgs/Screenshot-Aprtmanetos.png)
+![Página Apartamentos](./imgs/Screenshot%20-%20Apartamentos.png)
+
+**Página Resumo Mobile**
+
+![Página Resumo](./imgs/Screenshot%20-%20Mobile%20Home%20Page.png)
+
+**Página Cadastrar Mobile**
+
+![Página Cadastrar](./imgs/Screenshot%20-%20Mobile%20Cadastrar%20Apartamento.png)
+
+**Página Apartamentos Mobile**
+
+![Página Apartamentos](./imgs/Screenshot%20-%20Mobile%20Apartamentos.png)
 
 ---
 

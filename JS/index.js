@@ -9,7 +9,7 @@ const containerAreaMedia = document.querySelector(".resumo-areaMedia");
 
 /*const apartamentosCriados = JSON.parse(localStorage.getItem("apartamentos")) || [];*/
 const apartamentosCriados = loadFlats ();
-console.log(apartamentosCriados);
+/*console.log(apartamentosCriados);*/
 
 /*const quantosChecked = JSON.parse(localStorage.getItem("quantosChecked"));
 const quantosChecked = loadCheckedAp();
@@ -64,14 +64,14 @@ function likesApartamentos () {
 
 function mediaRenda () {
     const numeroPrecoMedioMap = apartamentosCriados.map(apartamento => Number(apartamento.valor));
-    console.log(numeroPrecoMedioMap);
+    /*console.log(numeroPrecoMedioMap);*/
     let soma = 0;
     for (const numeros of numeroPrecoMedioMap) {
         soma += numeros;
     }
-    console.log(soma);
+    /*console.log(soma);*/
     let mediaRenda = soma / numeroPrecoMedioMap.length;
-    console.log(mediaRenda);
+    /*console.log(mediaRenda);*/
     const paragrafoMediaRenda = document.createElement("p");
     paragrafoMediaRenda.innerHTML = mediaRenda + " €";
     containerRendaMedia.appendChild(paragrafoMediaRenda);
@@ -79,14 +79,14 @@ function mediaRenda () {
 
 function mediaArea () {
     const numeroAreaMedioMap = apartamentosCriados.map(apartamento => Number(apartamento.area));
-    console.log(numeroAreaMedioMap);
+    /*console.log(numeroAreaMedioMap);*/
     let soma = 0;
     for (const numeros of numeroAreaMedioMap) {
         soma += numeros;
     }
-    console.log(soma);
+    /*console.log(soma);*/
     let mediaArea = soma / numeroAreaMedioMap.length;
-    console.log(mediaArea);
+    /*console.log(mediaArea);*/
     const paragrafoMediaArea = document.createElement("p");
     paragrafoMediaArea.innerHTML = mediaArea + " m²";
     containerAreaMedia.appendChild(paragrafoMediaArea);

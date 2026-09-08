@@ -21,7 +21,7 @@ const buttonModalCancelar = document.querySelector(".modal-button-cancelar");
 
 /*const apartamentosCriados = JSON.parse(localStorage.getItem("apartamentos")) || [];*/
 const apartamentosCriados = loadFlats();
-console.log(apartamentosCriados);
+/*console.log(apartamentosCriados);*/
 
 /* deu um erro pois tenho que abrir direto por um link a pagina e nao
 estou abrindo direto pelo disco, temos que ativar o live server-
@@ -36,7 +36,7 @@ let idSelecionado;
 
 function apagarApartamento (event) {
     /* como fazer com que o botao saiba qual apartamento estou criando VER MELHOR O QUE O TARGET FAZ*/
-    console.log("cliquei");
+    /*console.log("cliquei");*/
     idSelecionado = event.target.id;
     modal.classList.remove("hidden");
 };
@@ -45,18 +45,18 @@ function deletarAp () {
     const apartamentoEncontrado = apartamentosCriados.find(function (apartamento) {
         return apartamento.id == idSelecionado;
     });
-    /* tive que adicionar pois quando apagava um ap favoritado nao subtraia 1*/
+    /* tive que adicionar pois quando apagava um ap favoritado nao subtraia 1
     if (apartamentoEncontrado && apartamentoEncontrado.favorito) {
         quantosChecked -= 1;
         saveFlats(apartamentosCriados);
     }
-    /*console.log(apartamentoEncontrado);*/
+    console.log(apartamentoEncontrado);*/
     const indiceApartamentos = apartamentosCriados.findIndex(function (apartamento) {
          return apartamento.id == idSelecionado
     });
     /*console.log(indiceApartamentos);*/
     const removidoAp = apartamentosCriados.splice(indiceApartamentos, 1);
-    console.log("removido");
+    /*console.log("removido");*/
     /* para conseguir aceder a div com um id que seja dinamico vou usar query selector desse jeito 
     const idGetElement = "#" + idSelecionado;
     console.log(idGetElement);*/
@@ -83,14 +83,15 @@ buttonModalCancelar.addEventListener("click", cancelarAp);
 
 function favoritarAp (event) {
     const idSelecionado = event.target.id;
-    console.log("id:", idSelecionado);
+    /*console.log("id:", idSelecionado);*/
     const indiceFavorito = apartamentosCriados.findIndex(function (apartamento){
         return apartamento.id == idSelecionado;
     });
-    console.log("indice:", indiceFavorito);
+    /*console.log("indice:", indiceFavorito);*/
     apartamentosCriados[indiceFavorito].favorito = event.target.checked;
-    console.log("apartamentos atualizado:" + apartamentosCriados[indiceFavorito]);
+    /*console.log("apartamentos atualizado:" + apartamentosCriados[indiceFavorito]);*/
     saveFlats(apartamentosCriados);
+};
     /*if (event.target.checked) {
         quantosChecked += 1;
         console.log("checked");
@@ -100,9 +101,8 @@ function favoritarAp (event) {
         console.log("unchecked");
         console.log(quantosChecked);
     }
-    saveCheckedAp(quantosChecked);*/
-};
-    /*localStorage.setItem("likes", JSON.stringify(quantosChecked));
+    saveCheckedAp(quantosChecked);
+    localStorage.setItem("likes", JSON.stringify(quantosChecked));
  nao esta salvando o refresh nao fica salvo*/
 
 
