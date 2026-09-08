@@ -136,7 +136,7 @@ Por se tratar de um projeto em HTML, CSS e JavaScript puro, não é necessário 
 > Estrutura de referência 
 
 ```
-rentease/
+2st Final Project HTM + CSS + JS/
 ├── index.html           # Página Resumo
 ├── flats.html           # Página Apartamentos
 ├── new-flat.html        # Página Cadastrar
