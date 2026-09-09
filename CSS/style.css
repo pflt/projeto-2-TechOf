@@ -9,7 +9,7 @@
     --box-blur: blur(20px);
     --webkitbox-blur: blur(20px);
     --box-shadow: 0 1px 12px rgba(255, 255, 255, 0.25);
-    --box-border: 1px solid rgba(255, 255, 255, 0.25);;
+    --box-border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 * {
@@ -206,7 +206,7 @@ main {
 
 .resumo-container div {
     display: flex;
-    width: 14em;
+    width: 17em;
     border-radius: 3px;
     box-shadow: 1px 1px 3px black;
     background-color: var(--main-color);
@@ -216,6 +216,81 @@ main {
     margin: 0;
     padding: 0.8em 1.3em;
 }
+
+/* SECTION FAVORITOS-CARD-RESUMO */
+
+.favoritos-card-resumo {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 4em auto;
+}
+
+.h2-resumo-favoritos {
+    width: 80%;
+    color: var(--navbars-color);
+    background-color: var(--box-color);
+    box-shadow: var(--box-shadow);
+    border-radius: 8px;
+    border: var(--box-border);
+    backdrop-filter: var(--box-blur);
+    -webkit-backdrop-filter: var(--webkitbox-blur);
+    text-align: center;
+    margin-bottom: 1em;
+    padding: 0.5em 0;
+}
+
+.cards-resumo-favoritos {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 auto 1em auto;
+    gap: 1em;
+}
+
+.nenhum-resumo-favoritos {
+    padding: 1em;
+    background-color: var(--box-color);
+    box-shadow: var(--box-shadow);
+    border-radius: 8px;
+    border: var(--box-border);
+    backdrop-filter: var(--box-blur);
+    -webkit-backdrop-filter: var(--webkitbox-blur);
+    text-align: center;
+}
+
+.style-div-flats-resumo {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);  
+    gap: 1em;
+    margin: 0 auto;
+    color: var(--font-color2);
+    background-color: var(--box-color);
+    box-shadow: var(--box-shadow);
+    border-radius: 8px;
+    border: var(--box-border);
+    backdrop-filter: var(--box-blur);
+    -webkit-backdrop-filter: var(--webkitbox-blur);
+    padding: 1em;
+    border: 1px solid black;
+    box-shadow: 1px 1px 2px black;
+    transition: transform 0.3s ease-in-out;
+}
+
+.style-div-flats-resumo p {
+    margin: 0;
+}
+
+.style-div-flats-resumo:hover {
+    border: 1px solid var(--font-color3);
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
 
 /* FLATS.HTML*/
 
@@ -302,8 +377,9 @@ main {
 }
 
 #paragrafoNenhum {
-    width: 100%;
+    width: 70%;
     display: flex;
+    margin: 0 auto;
     justify-content: center;
     color: var(--font-color2);
     background-color: var(--box-color);
@@ -312,6 +388,7 @@ main {
     border: var(--box-border);
     backdrop-filter: var(--box-blur);
     -webkit-backdrop-filter: var(--webkitbox-blur);
+    padding: 0.5em 0;
 }
 
 .style-div-flats {
@@ -703,6 +780,15 @@ main {
     .resumo-container div {
         width: 12em;
     }
+
+    .cards-resumo-favoritos {
+        width: 95%;
+    }
+
+    .style-div-flats-resumo {
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 217px), 1fr)); 
+    }
+
 
     .form-filtros {
         width: 85%;

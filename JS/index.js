@@ -6,6 +6,8 @@ const numeroPrecoMedio = document.querySelector(".numero-precoMedio");
 const containerRendaMedia = document.querySelector(".resumo-precoMedio");
 const numeroAreaMedio = document.querySelector(".numero-areaMedia");
 const containerAreaMedia = document.querySelector(".resumo-areaMedia");
+const nenhumAp = document.querySelector(".nenhum-resumo-favoritos");
+const divFavoritosCard = document.querySelector(".cards-resumo-favoritos");
 
 /*const apartamentosCriados = JSON.parse(localStorage.getItem("apartamentos")) || [];*/
 const apartamentosCriados = loadFlats ();
@@ -91,4 +93,39 @@ function mediaArea () {
     paragrafoMediaArea.innerHTML = mediaArea + " m²";
     containerAreaMedia.appendChild(paragrafoMediaArea);
 };
+
+function favoritosCards () {
+    const likesCards = apartamentosCriados.filter((apartamento) => apartamento.favorito === true);
+    if (likesCards.length !== 0) {
+        nenhumAp.remove();
+        for (let i = 0; i < likesCards.length; i++) {
+            const divAps = document.createElement("div");
+            divAps.id = apartamentosCriados[i].id;
+            divAps.classList.add("style-div-flats-resumo");
+            divFavoritosCard.appendChild(divAps);
+            for (const chave in likesCards[i]) {
+                const flat = document.createElement("p");
+                flat.innerText = chave + ": " + apartamentosCriados[i][chave];
+                if (chave === "valor") {
+                    flat.innerText = chave + ": " + apartamentosCriados[i][chave] + "€";
+                }
+                if (chave === "area") {
+                    flat.innerText = chave + ": " + apartamentosCriados[i][chave] + "m²";
+                }
+                flat.classList.add("style-flat");
+                flat.classList.add(chave);
+                if (chave === "id")
+                    flat.classList.add("hidden");
+                if (chave === "favorito") {
+                    flat.classList.add("hidden");
+                }
+                divAps.appendChild(flat);
+            }
+    
+        } 
+    }
+};
+
+
+setInterval(favoritosCards(), 1000);
 
