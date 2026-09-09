@@ -65,7 +65,11 @@ function deletarAp () {
     divRemover.remove();
     /*para quando apagar atualizar o n umero de criacao*/
     listaAps.innerHTML = "";
+    if (apartamentosCriados.length === 0) {
+        listaAps.appendChild(paragrafo);
+    }
     cardsApartamentos();
+    /*criei pois caso nao tenha apartemntos por criar ele volta o nenhum apartamento*/
     modal.classList.add("hidden");
 };
 
